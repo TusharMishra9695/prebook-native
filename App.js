@@ -6,13 +6,14 @@ import Signup from "./src/screens/Signup";
 import GlobalStyles from "./src/Styles/GlobalStyle";
 import Courses from "./src/screens/Courses";
 import TabNav from "./src/navigates/TabNav";
-import StackNav from "./src/navigates/StackNav";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   return (
-    <View style={GlobalStyles.common}>
-      <StatusBar style="auto" />
-      <TabNav />
-    </View>
+    <NavigationContainer>
+      <View style={GlobalStyles.common}>
+        <TabNav />
+      </View>
+    </NavigationContainer>
   );
 }

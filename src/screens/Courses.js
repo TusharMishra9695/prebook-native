@@ -1,7 +1,7 @@
-import { FlatList, Image, ScrollView, Text, View } from "react-native";
+import { FlatList, ScrollView, Text, View } from "react-native";
 import CourseList from "../components/CourseList";
-import CoursesStyle from "../Styles/CoursesStyle";
 import GlobalStyles from "../Styles/GlobalStyle";
+
 export default function Courses() {
   const data = [
     { id: "1", title: "Item 1" },
@@ -16,15 +16,17 @@ export default function Courses() {
   ];
   const renderItem = ({ item }) => <CourseList title={item.title} />;
   return (
-    <ScrollView style={GlobalStyles.main}>
-      <View>
-        <Text style={GlobalStyles.heading}>10 Courses Available</Text>
-      </View>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-    </ScrollView>
+    <>
+      <ScrollView style={GlobalStyles.main}>
+        <View>
+          <Text style={GlobalStyles.heading}>10 Courses Available</Text>
+        </View>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </ScrollView>
+    </>
   );
 }

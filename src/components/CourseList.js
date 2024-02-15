@@ -1,8 +1,11 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import Borders from "./Borders";
 import CoursesStyle from "../Styles/CoursesStyle";
+import { useNavigation } from "@react-navigation/native";
 import GlobalStyles from "../Styles/GlobalStyle";
-export default function CourseList({ navigation }) {
+
+export default function CourseList() {
+  const navigation = useNavigation();
   return (
     <View style={CoursesStyle.compont}>
       <Text style={CoursesStyle.heading2}>
@@ -25,6 +28,7 @@ export default function CourseList({ navigation }) {
         <Text style={CoursesStyle.quotes}>100+ Topics</Text>
       </View>
       <Borders />
+
       <Text style={[GlobalStyles.heading, CoursesStyle.seat_alert]}>
         Limited Seats
       </Text>
