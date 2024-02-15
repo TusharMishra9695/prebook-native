@@ -1,0 +1,123 @@
+import { StyleSheet } from "react-native";
+import { Colors } from "../utils/someExports";
+
+const CoursesStyle = StyleSheet.create({
+  main: {
+    flex: 1,
+    padding: 15,
+    backgroundColor: "#fff",
+  },
+  heading: {
+    fontSize: 13,
+    fontWeight: "500",
+    color: "purple",
+    letterSpacing: 1,
+  },
+  heading2: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "purple",
+  },
+  heading3: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#212121",
+  },
+  compont: {
+    flex: 1,
+    gap: 10,
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 4,
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  image: {
+    height: 150,
+    borderRadius: 8,
+    resizeMode: "cover",
+  },
+  quotes_head: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  quotes: {
+    fontSize: 10,
+    fontWeight: "500",
+    color: "#212121",
+  },
+  quotes_left: {
+    fontSize: 10,
+    fontWeight: "400",
+    color: "grey",
+  },
+  border: {
+    flex: 1,
+    justifyContent: "center",
+    height: 1,
+    backgroundColor: "#ccc",
+    marginVertical: 10,
+  },
+  price_btn: {
+    height: 40,
+    width: 125,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "black",
+    borderColor: "#212121",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buy_btn: {
+    height: 40.5,
+    width: 135,
+    borderRadius: 20,
+    backgroundColor: Colors.primary,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "grey",
+    elevation: 10,
+  },
+  price_text: {
+    color: "purple",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  buy_text: {
+    fontSize: 15,
+    letterSpacing: 1,
+    fontWeight: "500",
+    color: "#fff",
+  },
+  btn_flex: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  inner_price: {
+    fontSize: 13,
+    fontWeight: "300",
+    color: "grey",
+    textDecorationLine: "line-through",
+  },
+  discount: {
+    textAlign: "center",
+    color: "purple",
+    letterSpacing: 3,
+    backgroundColor: "#fff",
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+});
+export default CoursesStyle;
