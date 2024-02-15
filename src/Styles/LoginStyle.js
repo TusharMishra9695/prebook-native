@@ -33,6 +33,7 @@ const LoginStyles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "500",
     letterSpacing: 2,
+    color: Colors.white,
   },
   msg: {
     marginTop: 10,
@@ -43,7 +44,7 @@ const LoginStyles = StyleSheet.create({
   },
   msg2: {
     fontSize: 14,
-    color: "#FFB534",
+    color: Colors.secondary, // "#FFB534"
     fontWeight: "500",
   },
 });

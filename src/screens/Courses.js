@@ -1,6 +1,7 @@
 import { FlatList, Image, ScrollView, Text, View } from "react-native";
 import CourseList from "../components/CourseList";
 import CoursesStyle from "../Styles/CoursesStyle";
+import GlobalStyles from "../Styles/GlobalStyle";
 export default function Courses() {
   const data = [
     { id: "1", title: "Item 1" },
@@ -15,9 +16,9 @@ export default function Courses() {
   ];
   const renderItem = ({ item }) => <CourseList title={item.title} />;
   return (
-    <ScrollView style={CoursesStyle.main}>
+    <ScrollView style={GlobalStyles.main}>
       <View>
-        <Text style={CoursesStyle.heading}>10 Courses Available</Text>
+        <Text style={GlobalStyles.heading}>10 Courses Available</Text>
       </View>
       <FlatList
         data={data}

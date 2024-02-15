@@ -1,5 +1,6 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import CoursesStyle from "../Styles/CoursesStyle";
+import GlobalStyles from "../Styles/GlobalStyle";
 export default function CourseList() {
   return (
     <View style={CoursesStyle.compont}>
@@ -21,7 +22,11 @@ export default function CourseList() {
         <Text style={CoursesStyle.quotes}>100+ Topics</Text>
       </View>
       <View style={CoursesStyle.border}></View>
-      <Text style={[CoursesStyle.heading, CoursesStyle.discount]}>
+
+      <Text style={[GlobalStyles.heading, CoursesStyle.seat_alert]}>
+        Limited Seats
+      </Text>
+      <Text style={[GlobalStyles.heading, CoursesStyle.discount]}>
         50% Discount applied
       </Text>
       <View style={CoursesStyle.btn_flex}>

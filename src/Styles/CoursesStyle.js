@@ -2,17 +2,6 @@ import { StyleSheet } from "react-native";
 import { Colors } from "../utils/someExports";
 
 const CoursesStyle = StyleSheet.create({
-  main: {
-    flex: 1,
-    padding: 15,
-    backgroundColor: "#fff",
-  },
-  heading: {
-    fontSize: 13,
-    fontWeight: "500",
-    color: "purple",
-    letterSpacing: 1,
-  },
   heading2: {
     fontSize: 14,
     fontWeight: "500",
@@ -77,7 +66,7 @@ const CoursesStyle = StyleSheet.create({
     height: 40.5,
     width: 135,
     borderRadius: 20,
-    backgroundColor: Colors.primary,
+    backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "grey",
@@ -108,8 +97,25 @@ const CoursesStyle = StyleSheet.create({
   discount: {
     textAlign: "center",
     color: "purple",
-    letterSpacing: 3,
+    fontSize: 14,
+    fontWeight: "600",
+    letterSpacing: 2,
     backgroundColor: "#fff",
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  seat_alert: {
+    fontSize: 14,
+    textAlign: "center",
+    backgroundColor: Colors.primary,
+    color: "#fff",
+    letterSpacing: 3,
     shadowColor: "#171717",
     shadowOpacity: 0.2,
     shadowRadius: 3,
