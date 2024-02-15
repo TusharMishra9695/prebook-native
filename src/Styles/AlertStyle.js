@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Colors } from "../utils/someExports";
 
 const AlertStyle = StyleSheet.create({
   date_text: {
@@ -9,6 +8,9 @@ const AlertStyle = StyleSheet.create({
     paddingBottom: 6,
     borderRadius: 15,
     letterSpacing: 1,
+  },
+  margin_extra: {
+    marginBottom: 10,
   },
 });
 export default AlertStyle;

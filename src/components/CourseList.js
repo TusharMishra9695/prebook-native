@@ -1,4 +1,5 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
+import Borders from "./Borders";
 import CoursesStyle from "../Styles/CoursesStyle";
 import GlobalStyles from "../Styles/GlobalStyle";
 export default function CourseList() {
@@ -21,8 +22,7 @@ export default function CourseList() {
         <Text style={CoursesStyle.quotes}>50+ Live Lectures</Text>
         <Text style={CoursesStyle.quotes}>100+ Topics</Text>
       </View>
-      <View style={CoursesStyle.border}></View>
-
+      <Borders />
       <Text style={[GlobalStyles.heading, CoursesStyle.seat_alert]}>
         Limited Seats
       </Text>
