@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import Courses from "../screens/Courses";
+import BatchDetail from "../screens/BatchDetail";
 const Stack = createNativeStackNavigator();
 
 export default function StackNav() {
   return (
-    <NavigationContainer>
+    <NavigationContainer initialRouteName="Classes">
       <Stack.Navigator>
-        {/* <Stack.Screen name="Home" component={Courses} /> */}
+        <Stack.Screen name="Details" component={BatchDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

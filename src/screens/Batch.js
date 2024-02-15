@@ -1,18 +1,24 @@
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import GlobalStyles from "../Styles/GlobalStyle";
 import CoursesStyle from "../Styles/CoursesStyle";
 import BatchStyle from "../Styles/BatchStyl.e";
 import AlertStyle from "../Styles/AlertStyle";
+import CourseList from "../components/CourseList";
 export default function Batch() {
   return (
-    <View style={GlobalStyles.main}>
-      <View style={CoursesStyle.compont}>
+    <ScrollView style={GlobalStyles.main}>
+      <View style={BatchStyle.component}>
         <Text style={BatchStyle.emptymsg}>
-          Your Class in going to start in 50 mins Your Class in going to start
-          in 50 mins Your Class in going to start in 50 mins Your Class in going
-          to start in 50 mins.
+          Oops ! You haven't enrolled in any batch.
+        </Text>
+        <Text style={[GlobalStyles.heading, BatchStyle.extra_margin]}>
+          Here is some recommended batch for you.
         </Text>
       </View>
-    </View>
+      <CourseList />
+      <CourseList />
+      <CourseList />
+      <CourseList />
+    </ScrollView>
   );
 }

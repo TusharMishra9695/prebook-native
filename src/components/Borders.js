@@ -1,6 +1,6 @@
-import CoursesStyle from "../Styles/CoursesStyle";
 import { View } from "react-native";
+import GlobalStyles from "../Styles/GlobalStyle";
 
 export default function Borders() {
-  return <View style={CoursesStyle.border}></View>;
+  return <View style={GlobalStyles.border}></View>;
 }

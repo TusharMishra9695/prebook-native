@@ -24,5 +24,11 @@ const GlobalStyles = StyleSheet.create({
     color: Colors.secondary,
     letterSpacing: 1,
   },
+  border: {
+    justifyContent: "center",
+    height: 0.5,
+    backgroundColor: "#000",
+    marginVertical: 10,
+  },
 });
 export default GlobalStyles;

@@ -45,13 +45,6 @@ const CoursesStyle = StyleSheet.create({
     fontWeight: "400",
     color: "grey",
   },
-  border: {
-    flex: 1,
-    justifyContent: "center",
-    height: 1,
-    backgroundColor: "#ccc",
-    marginVertical: 10,
-  },
   price_btn: {
     height: 40,
     width: 125,

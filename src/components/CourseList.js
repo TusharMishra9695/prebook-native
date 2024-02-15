@@ -2,19 +2,21 @@ import { Text, View, Image, TouchableOpacity } from "react-native";
 import Borders from "./Borders";
 import CoursesStyle from "../Styles/CoursesStyle";
 import GlobalStyles from "../Styles/GlobalStyle";
-export default function CourseList() {
+export default function CourseList({ navigation }) {
   return (
     <View style={CoursesStyle.compont}>
       <Text style={CoursesStyle.heading2}>
         HTML/CSS Course{" "}
         <Text style={CoursesStyle.heading3}>[ Hindi, Online ]</Text>
       </Text>
-      <Image
-        style={CoursesStyle.image}
-        source={{
-          uri: "https://boffinsacademy.com/wp-content/uploads/2023/10/best-data-science-courses-in-nagpur-8.png",
-        }}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+        <Image
+          style={CoursesStyle.image}
+          source={{
+            uri: "https://boffinsacademy.com/wp-content/uploads/2023/10/best-data-science-courses-in-nagpur-8.png",
+          }}
+        />
+      </TouchableOpacity>
       <View style={CoursesStyle.quotes_head}>
         <Text style={CoursesStyle.quotes_left}>
           Starts on<Text style={CoursesStyle.quotes}>10 Feb 2024</Text>

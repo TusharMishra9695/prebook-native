@@ -12,7 +12,7 @@ export default function TabNav() {
         <Tab.Screen name="My Batch" component={Batch} />
         <Tab.Screen name="Classes" component={Courses} />
         <Tab.Screen name="Alerts" component={Alerts} />
-        <Tab.Screen name="Profile" component={More} />
+        <Tab.Screen name="More" component={More} />
       </Tab.Navigator>
     </NavigationContainer>
   );
