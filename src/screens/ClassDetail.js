@@ -2,7 +2,26 @@ import { Text, View, ScrollView } from "react-native";
 import GlobalStyles from "../Styles/GlobalStyle";
 import BatchDetailStyle from "../Styles/BatchDetailStyle";
 import Borders from "../components/Borders";
+import { useEffect } from "react";
+import { getCachedData } from "../utils/someExports";
+import { useNavigation } from "@react-navigation/native";
 export default function ClassDetail() {
+  const navigation = useNavigation();
+  async function checkAuth() {
+    try {
+      let result = await getCachedData("token");
+      if (result.token) {
+        navigation.navigate("Course");
+      } else {
+        navigation.navigate("Login");
+      }
+    } catch (e) {
+      console.log(e, "auth error");
+    }
+  }
+  useEffect(() => {
+    checkAuth();
+  }, []);
   return (
     <ScrollView style={BatchDetailStyle.main}>
       <View style={BatchDetailStyle.main}>

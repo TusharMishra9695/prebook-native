@@ -26,6 +26,11 @@ export default function App() {
             component={Login}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="Course"
+            component={TabNav}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </View>
     </NavigationContainer>

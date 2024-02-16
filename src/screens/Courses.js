@@ -1,8 +1,26 @@
 import { FlatList, ScrollView, Text, View } from "react-native";
 import CourseList from "../components/CourseList";
 import GlobalStyles from "../Styles/GlobalStyle";
-
+import { useEffect } from "react";
+import { getCachedData } from "../utils/someExports";
+import { useNavigation } from "@react-navigation/native";
 export default function Courses() {
+  const navigation = useNavigation();
+  async function checkAuth() {
+    try {
+      let result = await getCachedData("token");
+      if (result.token) {
+        navigation.navigate("Course");
+      } else {
+        navigation.navigate("Login");
+      }
+    } catch (e) {
+      console.log(e, "auth error");
+    }
+  }
+  useEffect(() => {
+    checkAuth();
+  }, []);
   const data = [
     { id: "1", title: "Item 1" },
     { id: "2", title: "Item 2" },

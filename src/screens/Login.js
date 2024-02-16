@@ -2,11 +2,13 @@ import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import LoginStyles from "../Styles/LoginStyle";
 import GlobalStyles from "../Styles/GlobalStyle";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { postAPI } from "../utils/apiCalls";
 import {
   TextError,
+  cacheData,
+  getCachedData,
   validatePassword,
   validatePhoneNumber,
 } from "../utils/someExports";
@@ -19,11 +21,21 @@ export default function Login() {
     phoneNumber: false,
     password: false,
   });
+
+  function checkAuth() {
+    let result = getCachedData("token");
+    if (result.token) {
+      navigation.navigate("Course");
+    } else {
+      navigation.navigate("Signup");
+    }
+  }
+  useEffect(() => {
+    checkAuth();
+  }, []);
   async function handleSubmit() {
     let a = parseInt(phoneNumber);
-
     if (validatePhoneNumber(phoneNumber)) {
-      console.log("true");
       let formData = { phoneNumber: a, password };
       try {
         let data = await postAPI(
@@ -33,8 +45,11 @@ export default function Login() {
           formData
         );
         if (data.success) {
+          route.params && route.params.data == "Signup"
+            ? null
+            : cacheData("token", { token: data.token });
           navigation.navigate(
-            route.params && route.params.data === "Signup" ? "Signup" : "Login"
+            route.params && route.params.data == "Signup" ? "Login" : "Course"
           );
         } else {
           console.log(data.message);
@@ -43,9 +58,9 @@ export default function Login() {
         console.log("some error in login/signup");
       }
     } else {
-      console.log(false);
       seterrors({ ...errors, phoneNumber: true });
     }
+    setpassword(""), setphoneNumber("");
   }
 
   return (
@@ -59,7 +74,10 @@ export default function Login() {
             placeholder="Enter Phone No."
             style={GlobalStyles.input}
             value={phoneNumber}
-            onChangeText={(number) => setphoneNumber(number)}
+            onChangeText={(number) => {
+              setphoneNumber(number),
+                seterrors({ ...errors, phoneNumber: false });
+            }}
             keyboardType="numeric"
             maxLength={10}
           />
@@ -93,8 +111,10 @@ export default function Login() {
           </Text>
           <TouchableOpacity
             onPress={() =>
-              route.params && route.params.data === "Signup"
-                ? navigation.navigate("Login")
+              route.params
+                ? route.params.data === "Signup"
+                  ? navigation.navigate("Login")
+                  : null
                 : navigation.navigate("Signup", { data: "Signup" })
             }
           >

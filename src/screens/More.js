@@ -1,38 +1,72 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import MoreStyle from "../Styles/MoreStyle";
 import GlobalStyles from "../Styles/GlobalStyle";
+import { getCachedData } from "../utils/someExports";
 import Borders from "../components/Borders";
+import { useNavigation } from "@react-navigation/native";
+import { removeItemFromStorage } from "../utils/someExports";
+import { useEffect } from "react";
 export default function More() {
+  const navigation = useNavigation();
+  async function checkAuth() {
+    try {
+      let result = await getCachedData("token");
+      if (result.token) {
+        navigation.navigate("Course");
+      } else {
+        navigation.navigate("Login");
+      }
+    } catch (e) {
+      console.log(e, "auth error");
+    }
+  }
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
   return (
     <View style={MoreStyle.main}>
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>My Account</Text>
-      </View>
+      </TouchableOpacity>
       <Borders />
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>My Downloads</Text>
-      </View>
+      </TouchableOpacity>
       <Borders />
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>Transactions</Text>
-      </View>
+      </TouchableOpacity>
       <Borders />
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>Terms of Use</Text>
-      </View>
+      </TouchableOpacity>
       <Borders />
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>Privacy Policy</Text>
-      </View>
+      </TouchableOpacity>
       <Borders />
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>Contact Us</Text>
-      </View>
+      </TouchableOpacity>
       <Borders />
 
-      <View style={MoreStyle.list}>
+      <TouchableOpacity style={MoreStyle.list}>
         <Text style={MoreStyle.list_txt}>Offers</Text>
-      </View>
+      </TouchableOpacity>
+      <Borders />
+
+      <TouchableOpacity style={MoreStyle.list}>
+        <Text
+          style={MoreStyle.list_txt}
+          onPress={() => {
+            removeItemFromStorage("token");
+            navigation.navigate("Login");
+          }}
+        >
+          SignOut
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }

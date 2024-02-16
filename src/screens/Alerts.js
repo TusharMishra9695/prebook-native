@@ -2,8 +2,28 @@ import { ScrollView, Text, View } from "react-native";
 import GlobalStyles from "../Styles/GlobalStyle";
 import AlertStyle from "../Styles/AlertStyle";
 import CoursesStyle from "../Styles/CoursesStyle";
+import { getCachedData } from "../utils/someExports";
 import Borders from "../components/Borders";
+import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 export default function Alerts() {
+  const navigation = useNavigation();
+
+  async function checkAuth() {
+    try {
+      let result = await getCachedData("token");
+      if (result.token) {
+        navigation.navigate("Course");
+      } else {
+        navigation.navigate("Login");
+      }
+    } catch (e) {
+      console.log(e, "auth error");
+    }
+  }
+  useEffect(() => {
+    checkAuth();
+  }, []);
   return (
     <ScrollView style={GlobalStyles.main}>
       <View style={[GlobalStyles.common, AlertStyle.margin_extra]}>
