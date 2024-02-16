@@ -5,17 +5,47 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { postAPI } from "../utils/apiCalls";
+import {
+  TextError,
+  validatePassword,
+  validatePhoneNumber,
+} from "../utils/someExports";
 export default function Login() {
   const navigation = useNavigation();
   const route = useRoute();
   const [phoneNumber, setphoneNumber] = useState("");
   const [password, setpassword] = useState("");
-  function handleSubmit() {
-    let formData = { phoneNumber, password };
-    postAPI(
-      `/${route.params && route.params.data === "Signup" ? "Signup" : "Login"}`,
-      formData
-    );
+  const [errors, seterrors] = useState({
+    phoneNumber: false,
+    password: false,
+  });
+  async function handleSubmit() {
+    let a = parseInt(phoneNumber);
+
+    if (validatePhoneNumber(phoneNumber)) {
+      console.log("true");
+      let formData = { phoneNumber: a, password };
+      try {
+        let data = await postAPI(
+          `/${
+            route.params && route.params.data === "Signup" ? "signup" : "login"
+          }`,
+          formData
+        );
+        if (data.success) {
+          navigation.navigate(
+            route.params && route.params.data === "Signup" ? "Signup" : "Login"
+          );
+        } else {
+          console.log(data.message);
+        }
+      } catch (e) {
+        console.log("some error in login/signup");
+      }
+    } else {
+      console.log(false);
+      seterrors({ ...errors, phoneNumber: true });
+    }
   }
 
   return (
@@ -31,7 +61,9 @@ export default function Login() {
             value={phoneNumber}
             onChangeText={(number) => setphoneNumber(number)}
             keyboardType="numeric"
+            maxLength={10}
           />
+          {errors.phoneNumber && TextError("Enter Correct Number")}
         </View>
         <View>
           <TextInput

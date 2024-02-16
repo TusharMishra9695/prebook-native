@@ -30,5 +30,10 @@ const GlobalStyles = StyleSheet.create({
     backgroundColor: "#000",
     marginVertical: 10,
   },
+  error: {
+    fontSize: 12,
+    fontWeight: "400",
+    color: "red",
+  },
 });
 export default GlobalStyles;
