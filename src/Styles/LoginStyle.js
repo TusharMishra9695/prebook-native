@@ -36,8 +36,6 @@ const LoginStyles = StyleSheet.create({
     color: Colors.white,
   },
   msg: {
-    marginTop: 10,
-    textAlign: "center",
     fontSize: 14,
     color: "#212121",
     fontWeight: "400",
@@ -46,6 +44,12 @@ const LoginStyles = StyleSheet.create({
     fontSize: 14,
     color: Colors.secondary, // "#FFB534"
     fontWeight: "500",
+  },
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    paddingTop: 20,
+    justifyContent: "center",
   },
 });
 
