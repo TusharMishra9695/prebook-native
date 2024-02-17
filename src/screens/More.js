@@ -11,9 +11,7 @@ export default function More() {
   async function checkAuth() {
     try {
       let result = await getCachedData("token");
-      if (result.token) {
-        navigation.navigate("Course");
-      } else {
+      if (!result.token) {
         navigation.navigate("Login");
       }
     } catch (e) {

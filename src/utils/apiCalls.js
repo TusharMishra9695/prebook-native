@@ -1,8 +1,13 @@
 import axios from "axios";
 
-export async function getAPI(url) {
+export async function getAPI(endPoint, token) {
+  const url = `http://192.168.170.237:5000/api${endPoint}`;
   try {
-    let result = await axios.get(url);
+    let result = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+      },
+    });
     return result.data;
   } catch (e) {
     console.log(e, "get error");

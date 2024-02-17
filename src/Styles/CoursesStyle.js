@@ -11,6 +11,7 @@ const CoursesStyle = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
     color: "#212121",
+    textTransform: "capitalize",
   },
   compont: {
     flex: 1,
@@ -33,7 +34,7 @@ const CoursesStyle = StyleSheet.create({
   quotes_head: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
   },
   quotes: {
     fontSize: 10,
@@ -45,6 +46,7 @@ const CoursesStyle = StyleSheet.create({
     fontWeight: "400",
     color: "grey",
   },
+
   price_btn: {
     height: 40,
     width: 125,
@@ -107,7 +109,7 @@ const CoursesStyle = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
     backgroundColor: Colors.primary,
-    color: "#fff",
+    color: "red",
     letterSpacing: 3,
     shadowColor: "#171717",
     shadowOpacity: 0.2,

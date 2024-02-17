@@ -26,8 +26,6 @@ export default function Login() {
     let result = getCachedData("token");
     if (result.token) {
       navigation.navigate("Course");
-    } else {
-      navigation.navigate("Signup");
     }
   }
   useEffect(() => {
@@ -36,7 +34,7 @@ export default function Login() {
   async function handleSubmit() {
     let a = parseInt(phoneNumber);
     if (validatePhoneNumber(phoneNumber)) {
-      let formData = { phoneNumber: a, password };
+      let formData = { phoneNumber: a, password, role: "user" };
       try {
         let data = await postAPI(
           `/${

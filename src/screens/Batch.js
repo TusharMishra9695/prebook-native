@@ -12,9 +12,7 @@ export default function Batch() {
   async function checkAuth() {
     try {
       let result = await getCachedData("token");
-      if (result.token) {
-        navigation.navigate("Course");
-      } else {
+      if (!result.token) {
         navigation.navigate("Login");
       }
     } catch (e) {
@@ -34,10 +32,10 @@ export default function Batch() {
           Here is some recommended batch for you.
         </Text>
       </View>
+      {/* <CourseList />
       <CourseList />
       <CourseList />
-      <CourseList />
-      <CourseList />
+      <CourseList /> */}
     </ScrollView>
   );
 }

@@ -1,16 +1,42 @@
-import { FlatList, ScrollView, Text, View } from "react-native";
+import {
+  FlatList,
+  ScrollView,
+  SafeAreaView,
+  Text,
+  View,
+  RefreshControl,
+} from "react-native";
 import CourseList from "../components/CourseList";
 import GlobalStyles from "../Styles/GlobalStyle";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
+import { getAPI } from "../utils/apiCalls";
+import { useState } from "react";
 export default function Courses() {
   const navigation = useNavigation();
+  const [refreshing, setRefreshing] = useState(false);
+  const [products, setproducts] = useState("");
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000);
+  }, []);
+
   async function checkAuth() {
     try {
-      let result = await getCachedData("token");
+      const result = await getCachedData("token");
       if (result.token) {
-        navigation.navigate("Course");
+        if (!products) {
+          const data = await getAPI("/products", result.token);
+          if (data.success) {
+            setproducts(data.result);
+          } else {
+            console.log(data.message);
+          }
+        }
       } else {
         navigation.navigate("Login");
       }
@@ -18,32 +44,31 @@ export default function Courses() {
       console.log(e, "auth error");
     }
   }
+
   useEffect(() => {
     checkAuth();
   }, []);
-  const data = [
-    { id: "1", title: "Item 1" },
-    { id: "2", title: "Item 2" },
-    { id: "3", title: "Item 3" },
-    { id: "4", title: "Item 3" },
-    { id: "5", title: "Item 3" },
-    { id: "6", title: "Item 3" },
-    { id: "7", title: "Item 3" },
-    { id: "8", title: "Item 3" },
-    { id: "9", title: "Item 3" },
-  ];
-  const renderItem = ({ item }) => <CourseList title={item.title} />;
+
   return (
     <>
-      <ScrollView style={GlobalStyles.main}>
+      <ScrollView
+        style={GlobalStyles.main}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <View>
-          <Text style={GlobalStyles.heading}>10 Courses Available</Text>
+          <Text style={GlobalStyles.heading}>
+            {products && products.length} Courses Available
+          </Text>
         </View>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        {products && (
+          <FlatList
+            data={products}
+            renderItem={({ item }) => <CourseList key={item._id} item={item} />}
+            keyExtractor={(item) => item._id}
+          />
+        )}
       </ScrollView>
     </>
   );
