@@ -49,10 +49,9 @@ const CoursesStyle = StyleSheet.create({
 
   price_btn: {
     height: 40,
-    width: 125,
+    width: 150,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: "black",
     borderColor: "#212121",
     alignItems: "center",
     justifyContent: "center",

@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  ScrollView,
-  SafeAreaView,
-  Text,
-  View,
-  RefreshControl,
-} from "react-native";
+import { FlatList, Text, View, RefreshControl } from "react-native";
 import CourseList from "../components/CourseList";
 import GlobalStyles from "../Styles/GlobalStyle";
 import { useEffect, useCallback } from "react";
@@ -51,7 +44,7 @@ export default function Courses() {
 
   return (
     <>
-      <ScrollView
+      <View
         style={GlobalStyles.main}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -65,11 +58,11 @@ export default function Courses() {
         {products && (
           <FlatList
             data={products}
-            renderItem={({ item }) => <CourseList key={item._id} item={item} />}
+            renderItem={({ item }) => <CourseList item={item} />}
             keyExtractor={(item) => item._id}
           />
         )}
-      </ScrollView>
+      </View>
     </>
   );
 }
