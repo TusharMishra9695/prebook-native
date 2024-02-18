@@ -4,12 +4,14 @@ import GlobalStyles from "../Styles/GlobalStyle";
 import { useEffect, useCallback } from "react";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
-import { getAPI } from "../utils/apiCalls";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchData } from "../store/slices/apiSlice";
 import { useState } from "react";
 export default function Courses() {
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState(false);
-  const [products, setproducts] = useState("");
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.apiSlice.data.result);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -22,13 +24,8 @@ export default function Courses() {
     try {
       const result = await getCachedData("token");
       if (result.token) {
-        if (!products) {
-          const data = await getAPI("/products", result.token);
-          if (data.success) {
-            setproducts(data.result);
-          } else {
-            console.log(data.message);
-          }
+        if (!state) {
+          dispatch(fetchData(result.token));
         }
       } else {
         navigation.navigate("Login");
@@ -44,22 +41,20 @@ export default function Courses() {
 
   return (
     <>
-      <View
-        style={GlobalStyles.main}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
+      <View style={GlobalStyles.main}>
         <View>
           <Text style={GlobalStyles.heading}>
-            {products && products.length} Courses Available
+            {state && state.length} Courses Available
           </Text>
         </View>
-        {products && (
+        {state && (
           <FlatList
-            data={products}
+            data={state}
             renderItem={({ item }) => <CourseList item={item} />}
             keyExtractor={(item) => item._id}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
           />
         )}
       </View>
