@@ -1,7 +1,5 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
-import GlobalStyles from "../Styles/GlobalStyle";
 import BatchDetailStyle from "../Styles/BatchDetailStyle";
-import Borders from "../components/Borders";
 import { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { getCachedData } from "../utils/someExports";

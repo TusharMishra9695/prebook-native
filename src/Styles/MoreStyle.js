@@ -9,8 +9,10 @@ const MoreStyle = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   list: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    flexDirection: "row",
+    height: 40,
+    gap: 10,
+    paddingTop: 5,
     paddingLeft: 20,
   },
   list_txt: {

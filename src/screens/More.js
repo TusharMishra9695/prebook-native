@@ -1,6 +1,6 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import MoreStyle from "../Styles/MoreStyle";
-import GlobalStyles from "../Styles/GlobalStyle";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { getCachedData } from "../utils/someExports";
 import Borders from "../components/Borders";
 import { useNavigation } from "@react-navigation/native";
@@ -25,36 +25,40 @@ export default function More() {
   return (
     <View style={MoreStyle.main}>
       <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="account-circle" size={26} color="black" />
         <Text style={MoreStyle.list_txt}>My Account</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
-        <Text style={MoreStyle.list_txt}>My Downloads</Text>
-      </TouchableOpacity>
-      <Borders />
-      <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="payment" size={26} color="black" />
         <Text style={MoreStyle.list_txt}>Transactions</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="policy" size={26} color="black" />
         <Text style={MoreStyle.list_txt}>Terms of Use</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="privacy-tip" size={26} color="black" />
         <Text style={MoreStyle.list_txt}>Privacy Policy</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="contact-mail" size={26} color="black" />
         <Text style={MoreStyle.list_txt}>Contact Us</Text>
       </TouchableOpacity>
       <Borders />
 
       <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="percent" size={26} color="black" />
+
         <Text style={MoreStyle.list_txt}>Offers</Text>
       </TouchableOpacity>
       <Borders />
 
       <TouchableOpacity style={MoreStyle.list}>
+        <MaterialIcon name="logout" size={26} color="black" />
         <Text
           style={MoreStyle.list_txt}
           onPress={() => {
