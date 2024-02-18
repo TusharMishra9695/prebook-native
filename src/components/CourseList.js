@@ -16,18 +16,16 @@ export default function CourseList(props) {
     name,
     topics,
     seats,
-    projects,
     original_price,
     mode,
     lectures,
     language,
     interview_questions,
-    includes,
     imageUrl,
     duration,
     discounted_price,
     classStart,
-    category,
+    _id,
   } = props.item;
   return (
     <View style={CoursesStyle.compont}>
@@ -37,7 +35,9 @@ export default function CourseList(props) {
           [{language}, {mode}]
         </Text>
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Details", { id: _id })}
+      >
         <Image
           style={CoursesStyle.image}
           source={{

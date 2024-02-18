@@ -44,12 +44,12 @@ export default function Courses() {
       <View style={GlobalStyles.main}>
         <View>
           <Text style={GlobalStyles.heading}>
-            {state && state.result.length} Courses Available
+            {state && state.result && state.result.length} Courses Available
           </Text>
         </View>
         {state && (
           <FlatList
-            data={state.result}
+            data={state.result && state.result}
             renderItem={({ item }) => <CourseList item={item} />}
             keyExtractor={(item) => item._id}
             refreshControl={
