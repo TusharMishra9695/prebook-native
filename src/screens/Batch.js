@@ -1,13 +1,14 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import GlobalStyles from "../Styles/GlobalStyle";
 import CoursesStyle from "../Styles/CoursesStyle";
 import BatchStyle from "../Styles/BatchStyl.e";
 import { getCachedData } from "../utils/someExports";
-import AlertStyle from "../Styles/AlertStyle";
 import CourseList from "../components/CourseList";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 export default function Batch() {
+  const state = useSelector((state) => state.apiSlice.data);
   const navigation = useNavigation();
   async function checkAuth() {
     try {
@@ -32,10 +33,13 @@ export default function Batch() {
           Here is some recommended batch for you.
         </Text>
       </View>
-      {/* <CourseList />
-      <CourseList />
-      <CourseList />
-      <CourseList /> */}
+      {state &&
+        state.result.slice(0, 5).map((item, id) => {
+          return <CourseList item={item} key={id} />;
+        })}
+      <TouchableOpacity style={CoursesStyle.price_btn}>
+        <Text>For More</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }

@@ -6,7 +6,6 @@ export const fetchData = createAsyncThunk("fetchData", async (token) => {
   try {
     const response = await getAPI("/products", token);
     if (response.success) {
-      console.log("api call sucese");
       return response;
     } else {
       console.log(response.message, "message");

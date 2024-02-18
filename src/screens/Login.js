@@ -42,6 +42,7 @@ export default function Login() {
           }`,
           formData
         );
+
         if (data.success) {
           route.params && route.params.data == "Signup"
             ? null

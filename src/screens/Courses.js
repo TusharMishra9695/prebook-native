@@ -11,7 +11,7 @@ export default function Courses() {
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState(false);
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.apiSlice.data.result);
+  const state = useSelector((state) => state.apiSlice.data);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -49,7 +49,7 @@ export default function Courses() {
         </View>
         {state && (
           <FlatList
-            data={state}
+            data={state.result}
             renderItem={({ item }) => <CourseList item={item} />}
             keyExtractor={(item) => item._id}
             refreshControl={
