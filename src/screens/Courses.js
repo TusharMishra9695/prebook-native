@@ -44,7 +44,7 @@ export default function Courses() {
       <View style={GlobalStyles.main}>
         <View>
           <Text style={GlobalStyles.heading}>
-            {state && state.length} Courses Available
+            {state && state.result.length} Courses Available
           </Text>
         </View>
         {state && (

@@ -10,7 +10,8 @@ export default function ClassDetail() {
   async function checkAuth() {
     try {
       let result = await getCachedData("token");
-      if (!result.token) {
+      if (result.token) {
+      } else {
         navigation.navigate("Login");
       }
     } catch (e) {

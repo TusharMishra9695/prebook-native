@@ -9,7 +9,7 @@ export default function TabNav() {
     <Tab.Navigator>
       <Tab.Screen name="My Batch" component={Batch} />
       <Tab.Screen name="Classes" component={ClassNav} />
-      <Tab.Screen name="Alerts" component={Alerts} />
+      {/* <Tab.Screen name="Alerts" component={Alerts} /> */}
       <Tab.Screen name="More" component={More} />
     </Tab.Navigator>
   );

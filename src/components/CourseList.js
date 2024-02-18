@@ -68,7 +68,7 @@ export default function CourseList(props) {
         </Text>
       ) : (
         <Text style={[GlobalStyles.heading, CoursesStyle.seat_alert]}>
-          Only {seats} seats left !!!
+          Only {seats} seats available !
         </Text>
       )}
 

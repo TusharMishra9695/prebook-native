@@ -27,10 +27,10 @@ export default function Batch() {
     <ScrollView style={GlobalStyles.main}>
       <View style={BatchStyle.component}>
         <Text style={BatchStyle.emptymsg}>
-          Oops ! You haven't enrolled in any batch.
+          Oops ! You haven't enrolled in any course.
         </Text>
         <Text style={[GlobalStyles.heading, BatchStyle.extra_margin]}>
-          Here is some recommended batch for you.
+          Here is some recommended courses for you.
         </Text>
       </View>
       {state &&
