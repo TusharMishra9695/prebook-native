@@ -37,8 +37,11 @@ export default function Batch() {
         state.result.slice(0, 5).map((item, id) => {
           return <CourseList item={item} key={id} />;
         })}
-      <TouchableOpacity style={CoursesStyle.price_btn}>
-        <Text>For More</Text>
+      <TouchableOpacity
+        style={CoursesStyle.recommended}
+        onPress={() => navigation.navigate("Classes")}
+      >
+        <Text style={GlobalStyles.heading}>Explore More Courses !</Text>
       </TouchableOpacity>
     </ScrollView>
   );

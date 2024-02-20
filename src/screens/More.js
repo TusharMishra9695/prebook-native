@@ -1,6 +1,7 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import MoreStyle from "../Styles/MoreStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import FeatherIcon from "react-native-vector-icons/Feather";
 import { getCachedData } from "../utils/someExports";
 import Borders from "../components/Borders";
 import { useNavigation } from "@react-navigation/native";
@@ -35,27 +36,29 @@ export default function More() {
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="policy" size={26} color="black" />
-        <Text style={MoreStyle.list_txt}>Terms of Use</Text>
+        <FeatherIcon name="alert-circle" size={26} color="black" />
+        <Text style={MoreStyle.list_txt}>About us</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="privacy-tip" size={26} color="black" />
-        <Text style={MoreStyle.list_txt}>Privacy Policy</Text>
-      </TouchableOpacity>
-      <Borders />
-      <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="contact-mail" size={26} color="black" />
-        <Text style={MoreStyle.list_txt}>Contact Us</Text>
+        <MaterialIcon name="check-box" size={26} color="black" />
+        <Text style={MoreStyle.list_txt}>Terms & Conditions</Text>
       </TouchableOpacity>
       <Borders />
 
+      <TouchableOpacity style={MoreStyle.list}>
+        <FeatherIcon name="phone-call" size={25} color="black" />
+
+        <Text style={MoreStyle.list_txt}>Contact Us</Text>
+      </TouchableOpacity>
+      <Borders />
+      {/* 
       <TouchableOpacity style={MoreStyle.list}>
         <MaterialIcon name="percent" size={26} color="black" />
 
         <Text style={MoreStyle.list_txt}>Offers</Text>
       </TouchableOpacity>
-      <Borders />
+      <Borders /> */}
 
       <TouchableOpacity style={MoreStyle.list}>
         <MaterialIcon name="logout" size={26} color="black" />

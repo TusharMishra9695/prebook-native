@@ -119,5 +119,16 @@ const CoursesStyle = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
   },
+  recommended: {
+    backgroundColor: "white",
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 40,
+    alignItems: "center",
+  },
 });
 export default CoursesStyle;

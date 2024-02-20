@@ -34,6 +34,11 @@ export default function App() {
               component={TabNav}
               options={{ headerShown: false }}
             />
+            {/* <Stack.Screen
+              name="Details"
+              component={ClassDetail}
+              options={{ headerShown: false }}
+            /> */}
             <Stack.Screen name="Checkout" component={Checkout} />
           </Stack.Navigator>
         </View>

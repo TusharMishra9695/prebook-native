@@ -6,7 +6,7 @@ import ClassNav from "./ClassNav";
 const Tab = createBottomTabNavigator();
 export default function TabNav() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="Classes">
       <Tab.Screen name="My Batch" component={Batch} />
       <Tab.Screen name="Classes" component={ClassNav} />
       {/* <Tab.Screen name="Alerts" component={Alerts} /> */}
