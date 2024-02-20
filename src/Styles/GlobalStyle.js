@@ -27,7 +27,7 @@ const GlobalStyles = StyleSheet.create({
   border: {
     justifyContent: "center",
     height: 0.5,
-    backgroundColor: "#000",
+    backgroundColor: "#d3d3d3",
     marginVertical: 10,
   },
   error: {

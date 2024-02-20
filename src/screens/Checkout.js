@@ -1,8 +1,12 @@
 import { Text, TouchableOpacity, View, Image } from "react-native";
 import CheckoutStyle from "../Styles/CheckoutStyle";
 import CoursesStyle from "../Styles/CoursesStyle";
+import Borders from "../components/Borders";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+
 export default function Checkout(props) {
-  const { original_price, name } = props.route.params.data;
+  const { original_price, name, coupon, duration, discounted_price } =
+    props.route.params.data;
   const { selectedValue } = props.route.params;
   return (
     <View style={CheckoutStyle.main}>
@@ -17,7 +21,9 @@ export default function Checkout(props) {
               uri: "https://boffinsacademy.com/wp-content/uploads/2023/10/best-data-science-courses-in-nagpur-8.png",
             }}
           />
-          <Text style={CheckoutStyle.selectedValue}>{name}</Text>
+          <Text style={CheckoutStyle.selectedValue}>
+            {name} [{duration} Months]
+          </Text>
 
           <View style={{ flexDirection: "row", gap: 10 }}>
             <Text style={CheckoutStyle.selectedValue}>
@@ -31,13 +37,49 @@ export default function Checkout(props) {
             </Text>
           </View>
           <Text style={CheckoutStyle.oneitem}>
-            {`You saved total (₹${(
+            {`You saved (₹${(
               original_price - selectedValue
             ).toLocaleString()})`}
           </Text>
         </View>
         <View style={CheckoutStyle.coupon}></View>
-        <View style={CheckoutStyle.summary}></View>
+        <View style={CheckoutStyle.summary}>
+          <View style={CheckoutStyle.inside_summary}>
+            <Text style={CheckoutStyle.summary_name01}>Payment Summary</Text>
+            <MaterialIcon name="arrow-drop-down" size={26} color="black" />
+          </View>
+          <View style={CheckoutStyle.inside_summary}>
+            <Text style={CheckoutStyle.summary_name01}>Price</Text>
+            <Text style={CheckoutStyle.summary_name02}>
+              ₹ {original_price.toLocaleString()}
+            </Text>
+          </View>
+          <View style={CheckoutStyle.inside_summary}>
+            <Text style={CheckoutStyle.summary_name01}>Course Disc.</Text>
+            <Text style={CheckoutStyle.summary_name02}>
+              -₹ {(original_price - selectedValue).toLocaleString()}
+            </Text>
+          </View>
+          <View style={CheckoutStyle.inside_summary}>
+            <Text style={CheckoutStyle.summary_name01}>Coupon Disc.</Text>
+            <Text style={CheckoutStyle.summary_name02}>
+              -₹{" "}
+              {selectedValue === discounted_price.onetime
+                ? coupon.toLocaleString()
+                : 0}
+            </Text>
+          </View>
+          <Borders />
+          <View style={CheckoutStyle.inside_summary}>
+            <Text style={CheckoutStyle.summary_name01}>Total Amount</Text>
+            <Text style={CheckoutStyle.summary_name02}>
+              ₹
+              {selectedValue === discounted_price.onetime
+                ? (selectedValue - coupon).toLocaleString()
+                : selectedValue}
+            </Text>
+          </View>
+        </View>
       </View>
       <View style={CheckoutStyle.footer}>
         <View style={CheckoutStyle.flexy}>

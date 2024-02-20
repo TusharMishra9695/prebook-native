@@ -74,17 +74,17 @@ export default function CourseList(props) {
           </Text>
         )}
 
-        <Text style={[GlobalStyles.heading, CoursesStyle.discount]}>
-          {selectedValue === discounted_price.monthly
-            ? "500 rs coupon available"
-            : `${(100 - (selectedValue * 100) / original_price).toFixed(
-                2
-              )} % Discount`}
-          {selectedValue != discounted_price.monthly &&
-            ` [ You saved (₹${(
-              original_price - selectedValue
-            ).toLocaleString()}) ]`}
-        </Text>
+        {selectedValue != discounted_price.monthly && (
+          <Text style={[GlobalStyles.heading, CoursesStyle.discount]}>
+            {`${(100 - (selectedValue * 100) / original_price).toFixed(
+              2
+            )} % Discount`}
+            {selectedValue != discounted_price.monthly &&
+              ` [ You saved (₹${(
+                original_price - selectedValue
+              ).toLocaleString()}) ]`}
+          </Text>
+        )}
         {showOptions && (
           <View style={styles.optionsContainer}>
             {discounted_price &&

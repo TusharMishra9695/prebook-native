@@ -72,6 +72,28 @@ const CheckoutStyle = StyleSheet.create({
     height: 100,
     borderRadius: 5,
   },
+  summary: {
+    borderWidth: 1, // Border width
+    borderColor: "#d3d3d3", // Border color
+    borderRadius: 10,
+    padding: 15,
+    gap: 10,
+    backgroundColor: "#fff",
+  },
+  inside_summary: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  summary_name01: {
+    fontSize: 14,
+    fontWeight: "300",
+    color: "#212121",
+  },
+  summary_name02: {
+    fontSize: 14,
+    fontWeight: "400",
+    color: Colors.secondary,
+  },
 });
 
 export default CheckoutStyle;
