@@ -8,6 +8,7 @@ import TabNav from "./src/navigates/TabNav";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ClassNav from "./src/navigates/ClassNav";
+import Checkout from "./src/screens/Checkout";
 import ClassDetail from "./src/screens/ClassDetail";
 import { Provider } from "react-redux";
 import { store } from "./src/store/store";
@@ -33,6 +34,7 @@ export default function App() {
               component={TabNav}
               options={{ headerShown: false }}
             />
+            <Stack.Screen name="Checkout" component={Checkout} />
           </Stack.Navigator>
         </View>
       </NavigationContainer>

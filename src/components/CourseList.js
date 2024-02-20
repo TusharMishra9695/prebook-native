@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import GlobalStyles from "../Styles/GlobalStyle";
 import { StyleSheet } from "react-native";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { Colors } from "../utils/someExports";
 
 export default function CourseList(props) {
@@ -74,10 +75,15 @@ export default function CourseList(props) {
         )}
 
         <Text style={[GlobalStyles.heading, CoursesStyle.discount]}>
-          {Math.round(
-            ((original_price - discounted_price.onetime) * 100) / original_price
-          )}
-          % Discount applied
+          {selectedValue === discounted_price.monthly
+            ? "500 rs coupon available"
+            : `${(100 - (selectedValue * 100) / original_price).toFixed(
+                2
+              )} % Discount`}
+          {selectedValue != discounted_price.monthly &&
+            ` [ You saved (₹${(
+              original_price - selectedValue
+            ).toLocaleString()}) ]`}
         </Text>
         {showOptions && (
           <View style={styles.optionsContainer}>
@@ -97,7 +103,7 @@ export default function CourseList(props) {
                         {key}: {discounted_price[key].toLocaleString()}
                       </Text>
                       <Text style={CoursesStyle.inner_price}>
-                        {(3499 * duration).toLocaleString()}
+                        {key != "monthly" && (3499 * duration).toLocaleString()}
                       </Text>
                     </TouchableOpacity>
                   )
@@ -115,9 +121,18 @@ export default function CourseList(props) {
               {selectedValue === 3499
                 ? `${selectedValue.toLocaleString()}/month`
                 : selectedValue.toLocaleString()}
+              <MaterialIcon name="arrow-drop-up" size={15} color="purple" />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={CoursesStyle.buy_btn}>
+          <TouchableOpacity
+            style={CoursesStyle.buy_btn}
+            onPress={() =>
+              navigation.navigate("Checkout", {
+                data: props.item,
+                selectedValue: selectedValue,
+              })
+            }
+          >
             <Text style={CoursesStyle.buy_text}>Buy Now</Text>
           </TouchableOpacity>
         </View>

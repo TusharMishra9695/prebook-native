@@ -93,7 +93,7 @@ const CoursesStyle = StyleSheet.create({
     color: "purple",
     fontSize: 14,
     fontWeight: "600",
-    letterSpacing: 2,
+    letterSpacing: 0.5,
     backgroundColor: "#fff",
     shadowColor: "#171717",
     shadowOpacity: 0.2,

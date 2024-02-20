@@ -1,11 +1,10 @@
-import { FlatList, Text, View, RefreshControl, Dimensions } from "react-native";
+import { FlatList, Text, View, RefreshControl } from "react-native";
 import CourseList from "../components/CourseList";
 import GlobalStyles from "../Styles/GlobalStyle";
 import { useEffect, useCallback } from "react";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
-import { StyleSheet } from "react-native";
 import { fetchData } from "../store/slices/apiSlice";
 import { useState } from "react";
 

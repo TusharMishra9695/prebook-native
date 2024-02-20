@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Courses from "../screens/Courses";
 import ClassDetail from "../screens/ClassDetail";
+import Checkout from "../screens/Checkout";
 const Stack = createNativeStackNavigator();
 
 export default function ClassNav() {
