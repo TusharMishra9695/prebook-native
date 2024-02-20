@@ -47,15 +47,6 @@ const CoursesStyle = StyleSheet.create({
     color: "grey",
   },
 
-  price_btn: {
-    height: 40,
-    width: 150,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#212121",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   buy_btn: {
     height: 40.5,
     width: 135,
@@ -65,6 +56,9 @@ const CoursesStyle = StyleSheet.create({
     justifyContent: "center",
     shadowColor: "grey",
     elevation: 10,
+  },
+  items: {
+    color: Colors.secondary, // Example styles
   },
   price_text: {
     color: "purple",
@@ -82,7 +76,13 @@ const CoursesStyle = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  flexy_picker: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 10,
+  },
   inner_price: {
+    marginTop: 1,
     fontSize: 13,
     fontWeight: "300",
     color: "grey",

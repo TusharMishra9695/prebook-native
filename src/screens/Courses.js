@@ -1,12 +1,14 @@
-import { FlatList, Text, View, RefreshControl } from "react-native";
+import { FlatList, Text, View, RefreshControl, Dimensions } from "react-native";
 import CourseList from "../components/CourseList";
 import GlobalStyles from "../Styles/GlobalStyle";
 import { useEffect, useCallback } from "react";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
+import { StyleSheet } from "react-native";
 import { fetchData } from "../store/slices/apiSlice";
 import { useState } from "react";
+
 export default function Courses() {
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState(false);
@@ -24,9 +26,7 @@ export default function Courses() {
     try {
       const result = await getCachedData("token");
       if (result.token) {
-        if (!state) {
-          dispatch(fetchData(result.token));
-        }
+        dispatch(fetchData(result.token));
       } else {
         navigation.navigate("Login");
       }
@@ -47,6 +47,7 @@ export default function Courses() {
             {state && state.result && state.result.length} Courses Available
           </Text>
         </View>
+
         {state && (
           <FlatList
             data={state.result && state.result}
