@@ -12,11 +12,22 @@ import {
   validatePassword,
   validatePhoneNumber,
 } from "../utils/someExports";
+import OTPVerificationModal from "../components/OTPModal";
+import Container, { Toast } from "toastify-react-native";
 export default function Login() {
   const navigation = useNavigation();
   const route = useRoute();
   const [phoneNumber, setphoneNumber] = useState("");
   const [password, setpassword] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const handleOpenModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
   const [errors, seterrors] = useState({
     phoneNumber: false,
     password: false,
@@ -32,15 +43,21 @@ export default function Login() {
     checkAuth();
   }, []);
   async function handleSubmit() {
-    let a = parseInt(phoneNumber);
+    let number = parseInt(phoneNumber);
     if (validatePhoneNumber(phoneNumber)) {
-      let formData = { phoneNumber: a, password, role: "user" };
+      let formData = { phoneNumber: number, password, role: "user" };
+      let signupData = {
+        phoneNumber: number,
+        password,
+        role: "user",
+        isVerified: false,
+      };
       try {
         let data = await postAPI(
           `/${
             route.params && route.params.data === "Signup" ? "signup" : "login"
           }`,
-          formData
+          route.params && route.params.data === "Signup" ? signupData : formData
         );
 
         if (data.success) {
@@ -48,10 +65,12 @@ export default function Login() {
             ? null
             : cacheData("token", { token: data.token });
           navigation.navigate(
-            route.params && route.params.data == "Signup" ? "Login" : "Course"
+            route.params && route.params.data == "Signup"
+              ? setModalVisible(true)
+              : "Course"
           );
         } else {
-          console.log(data.message);
+          Toast.error(data.message);
         }
       } catch (e) {
         console.log("some error in login/signup");
@@ -64,13 +83,15 @@ export default function Login() {
 
   return (
     <View style={LoginStyles.top}>
+      <Container position="top" />
       <View style={LoginStyles.box}>
         <Text style={LoginStyles.texts}>
           {route.params && route.params.data === "Signup" ? "Signup" : "Login"}
         </Text>
+
         <View>
           <TextInput
-            placeholder="Enter Phone No."
+            placeholder="Enter your phone no."
             style={GlobalStyles.input}
             value={phoneNumber}
             onChangeText={(number) => {
@@ -84,18 +105,14 @@ export default function Login() {
         </View>
         <View>
           <TextInput
-            placeholder="Enter Password"
+            placeholder="Enter password"
             style={GlobalStyles.input}
             secureTextEntry={true}
             value={password}
             onChangeText={(text) => setpassword(text)}
           />
         </View>
-        <TouchableOpacity
-          placeholder="Enter Password"
-          style={LoginStyles.submit_btn}
-          onPress={handleSubmit}
-        >
+        <TouchableOpacity style={LoginStyles.submit_btn} onPress={handleSubmit}>
           <Text style={LoginStyles.submit_text}>
             {route.params && route.params.data === "Signup"
               ? "SIGN UP"
@@ -125,6 +142,7 @@ export default function Login() {
           </TouchableOpacity>
         </View>
       </View>
+      <OTPVerificationModal visible={modalVisible} onClose={handleCloseModal} />
     </View>
   );
 }
