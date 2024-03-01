@@ -32,42 +32,44 @@ export default function More() {
   return (
     <View style={MoreStyle.main}>
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="account-circle" size={26} color="black" />
+        <MaterialIcon name="account-circle" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>My Account</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="payment" size={26} color="black" />
+        <MaterialIcon name="payment" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>Transactions</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
-        <FeatherIcon name="alert-circle" size={26} color="black" />
+        <FeatherIcon name="alert-circle" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>About us</Text>
       </TouchableOpacity>
       <Borders />
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="check-box" size={26} color="black" />
+        <MaterialIcon name="check-box" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>Terms & Conditions</Text>
       </TouchableOpacity>
       <Borders />
 
-      <TouchableOpacity style={MoreStyle.list}>
-        <FeatherIcon name="phone-call" size={25} color="black" />
-
+      <TouchableOpacity
+        style={MoreStyle.list}
+        onPress={() => navigation.navigate("Contact Us")}
+      >
+        <FeatherIcon name="phone-call" size={25} color="#212121" />
         <Text style={MoreStyle.list_txt}>Contact Us</Text>
       </TouchableOpacity>
       <Borders />
       {/* 
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="percent" size={26} color="black" />
+        <MaterialIcon name="percent" size={26} color="#212121" />
 
         <Text style={MoreStyle.list_txt}>Offers</Text>
       </TouchableOpacity>
       <Borders /> */}
 
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="logout" size={26} color="black" />
+        <MaterialIcon name="logout" size={26} color="#212121" />
         <Text
           style={MoreStyle.list_txt}
           onPress={() => setModalVisible(!modalVisible)}

@@ -12,11 +12,11 @@ export default function ClassNav() {
         component={Courses}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Details"
         component={ClassDetail}
         options={{ headerShown: false }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }

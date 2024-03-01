@@ -38,7 +38,7 @@ export default function CourseList(props) {
           </Text>
         </Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Details", { id: _id })}
+          onPress={() => navigation.navigate("Course Details", { id: _id })}
         >
           <Image
             style={CoursesStyle.image}

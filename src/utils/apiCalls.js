@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export async function getAPI(endPoint, token) {
-  const url = `http://192.168.40.237:5000/api${endPoint}`;
+  const url = `http://192.168.235.237:5000/api${endPoint}`;
   try {
     let result = await axios.get(url, {
       headers: {
@@ -15,7 +15,7 @@ export async function getAPI(endPoint, token) {
 }
 export async function postAPI(endPoint, formData) {
   try {
-    const url = `http://192.168.40.237:5000/api${endPoint}`;
+    const url = `http://192.168.235.237:5000/api${endPoint}`;
 
     let result = await axios.post(url, formData);
     return result.data;

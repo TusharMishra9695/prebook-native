@@ -20,13 +20,7 @@ export default function Login() {
   const [phoneNumber, setphoneNumber] = useState("");
   const [password, setpassword] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const handleOpenModal = () => {
-    setModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
+  const [modalData, setModalData] = useState("");
 
   const [errors, seterrors] = useState({
     phoneNumber: false,
@@ -59,21 +53,20 @@ export default function Login() {
           }`,
           route.params && route.params.data === "Signup" ? signupData : formData
         );
-
         if (data.success) {
           route.params && route.params.data == "Signup"
-            ? null
+            ? (setModalVisible(true), setModalData(data.result))
             : cacheData("token", { token: data.token });
+
           navigation.navigate(
-            route.params && route.params.data == "Signup"
-              ? setModalVisible(true)
-              : "Course"
+            route.params && route.params.data == "Signup" ? "Signup" : "Course"
           );
+          Toast.error(data.message);
         } else {
           Toast.error(data.message);
         }
       } catch (e) {
-        console.log("some error in login/signup");
+        console.log("some error in login/signup", e);
       }
     } else {
       seterrors({ ...errors, phoneNumber: true });
@@ -142,7 +135,13 @@ export default function Login() {
           </TouchableOpacity>
         </View>
       </View>
-      <OTPVerificationModal visible={modalVisible} onClose={handleCloseModal} />
+      {modalVisible && (
+        <OTPVerificationModal
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+          data={modalData}
+        />
+      )}
     </View>
   );
 }
