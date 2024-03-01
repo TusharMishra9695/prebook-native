@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   optionsContainer: {
     marginTop: 10,
-    borderColor: "gray",
+    borderColor: "purple",
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,

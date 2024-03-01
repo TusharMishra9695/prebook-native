@@ -23,6 +23,11 @@ export const validatePassword = (password) => {
   // Test the password against the regex
   return passwordRegex.test(password);
 };
+
+export const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 export const TextError = (text) => {
   return <Text style={{ color: "red" }}>{text}*</Text>;
 };
