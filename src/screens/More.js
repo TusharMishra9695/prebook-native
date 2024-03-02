@@ -1,4 +1,4 @@
-import { ScrollView, Text, TouchableOpacity, View, Modal } from "react-native";
+import { Text, TouchableOpacity, View, Modal } from "react-native";
 import MoreStyle from "../Styles/MoreStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import FeatherIcon from "react-native-vector-icons/Feather";
@@ -67,14 +67,12 @@ export default function More() {
       </TouchableOpacity>
       <Borders />
 
-      <TouchableOpacity style={MoreStyle.list}>
+      <TouchableOpacity
+        style={MoreStyle.list}
+        onPress={() => setModalVisible(!modalVisible)}
+      >
         <MaterialIcon name="logout" size={25} color="#212121" />
-        <Text
-          style={MoreStyle.list_txt}
-          onPress={() => setModalVisible(!modalVisible)}
-        >
-          SignOut
-        </Text>
+        <Text style={MoreStyle.list_txt}>SignOut</Text>
       </TouchableOpacity>
       <Modal
         animationType="slide"

@@ -48,18 +48,20 @@ export default function Profile() {
         </View>
         {!edit && <Borders />}
 
-        <View style={ProfileStyle.detail_flexy__input}>
-          {!edit && (
-            <FontIcon name="phone-alt" size={15} style={ProfileStyle.icons} />
-          )}
+        {!edit && (
+          <>
+            <View style={ProfileStyle.detail_flexy__input}>
+              <FontIcon name="phone-alt" size={15} style={ProfileStyle.icons} />
 
-          <TextInput
-            placeholder="Phone Number"
-            editable={edit}
-            style={edit ? GlobalStyles.input : ProfileStyle.custom_input}
-          />
-        </View>
-        {!edit && <Borders />}
+              <TextInput
+                placeholder="Phone Number"
+                editable={edit}
+                style={edit ? GlobalStyles.input : ProfileStyle.custom_input}
+              />
+            </View>
+            <Borders />
+          </>
+        )}
 
         <View style={ProfileStyle.detail_flexy__input}>
           {!edit && (

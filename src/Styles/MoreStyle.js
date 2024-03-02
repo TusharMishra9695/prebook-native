@@ -19,7 +19,7 @@ const MoreStyle = StyleSheet.create({
     letterSpacing: 1,
     fontSize: 18,
     fontWeight: "400",
-    color: "#000",
+    color: "purple",
   },
   centeredView: {
     flex: 1,
