@@ -23,17 +23,15 @@ export default function More() {
   useEffect(() => {
     checkAuth();
   }, []);
-  function handleSignout() {
-    // if (!modalVisible) {
-    //   removeItemFromStorage("token");
-    //   navigation.navigate("Login");
-    // }
-  }
+
   return (
     <View style={MoreStyle.main}>
-      <TouchableOpacity style={MoreStyle.list}>
+      <TouchableOpacity
+        style={MoreStyle.list}
+        onPress={() => navigation.navigate("My Profile")}
+      >
         <MaterialIcon name="account-circle" size={26} color="#212121" />
-        <Text style={MoreStyle.list_txt}>My Account</Text>
+        <Text style={MoreStyle.list_txt}>View Profile</Text>
       </TouchableOpacity>
       {/* <Borders />
       <TouchableOpacity style={MoreStyle.list}>
@@ -45,7 +43,7 @@ export default function More() {
         style={MoreStyle.list}
         onPress={() => navigation.navigate("About Us", { category: "about" })}
       >
-        <FeatherIcon name="alert-circle" size={26} color="#212121" />
+        <FeatherIcon name="alert-circle" size={25} color="#212121" />
         <Text style={MoreStyle.list_txt}>About us</Text>
       </TouchableOpacity>
       <Borders />
@@ -55,7 +53,7 @@ export default function More() {
           navigation.navigate("Terms and Conditions", { category: "terms" })
         }
       >
-        <MaterialIcon name="check-box" size={26} color="#212121" />
+        <MaterialIcon name="check-box" size={25} color="#212121" />
         <Text style={MoreStyle.list_txt}>Terms & Conditions</Text>
       </TouchableOpacity>
       <Borders />
@@ -64,13 +62,13 @@ export default function More() {
         style={MoreStyle.list}
         onPress={() => navigation.navigate("Contact Us")}
       >
-        <FeatherIcon name="phone-call" size={25} color="#212121" />
+        <FeatherIcon name="phone-call" size={24} color="#212121" />
         <Text style={MoreStyle.list_txt}>Contact Us</Text>
       </TouchableOpacity>
       <Borders />
 
       <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="logout" size={26} color="#212121" />
+        <MaterialIcon name="logout" size={25} color="#212121" />
         <Text
           style={MoreStyle.list_txt}
           onPress={() => setModalVisible(!modalVisible)}

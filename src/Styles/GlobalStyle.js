@@ -12,6 +12,7 @@ const GlobalStyles = StyleSheet.create({
     paddingLeft: 20,
     borderRadius: 20,
     backgroundColor: "#f3f5f7",
+    width: "100%",
   },
   main: {
     flex: 1,

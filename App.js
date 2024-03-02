@@ -14,6 +14,7 @@ import { Provider } from "react-redux";
 import { store } from "./src/store/store";
 import Contactus from "./src/screens/Contactus";
 import Aboutandterms from "./src/screens/Aboutandterms";
+import Profile from "./src/screens/Profile";
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -54,6 +55,11 @@ export default function App() {
             <Stack.Screen
               name="Terms and Conditions"
               component={Aboutandterms}
+              options={{ headerShown: true }}
+            />
+            <Stack.Screen
+              name="My Profile"
+              component={Profile}
               options={{ headerShown: true }}
             />
             <Stack.Screen name="Checkout" component={Checkout} />
