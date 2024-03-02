@@ -35,18 +35,26 @@ export default function More() {
         <MaterialIcon name="account-circle" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>My Account</Text>
       </TouchableOpacity>
-      <Borders />
+      {/* <Borders />
       <TouchableOpacity style={MoreStyle.list}>
         <MaterialIcon name="payment" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>Transactions</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <Borders />
-      <TouchableOpacity style={MoreStyle.list}>
+      <TouchableOpacity
+        style={MoreStyle.list}
+        onPress={() => navigation.navigate("About Us", { category: "about" })}
+      >
         <FeatherIcon name="alert-circle" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>About us</Text>
       </TouchableOpacity>
       <Borders />
-      <TouchableOpacity style={MoreStyle.list}>
+      <TouchableOpacity
+        style={MoreStyle.list}
+        onPress={() =>
+          navigation.navigate("Terms and Conditions", { category: "terms" })
+        }
+      >
         <MaterialIcon name="check-box" size={26} color="#212121" />
         <Text style={MoreStyle.list_txt}>Terms & Conditions</Text>
       </TouchableOpacity>
@@ -60,13 +68,6 @@ export default function More() {
         <Text style={MoreStyle.list_txt}>Contact Us</Text>
       </TouchableOpacity>
       <Borders />
-      {/* 
-      <TouchableOpacity style={MoreStyle.list}>
-        <MaterialIcon name="percent" size={26} color="#212121" />
-
-        <Text style={MoreStyle.list_txt}>Offers</Text>
-      </TouchableOpacity>
-      <Borders /> */}
 
       <TouchableOpacity style={MoreStyle.list}>
         <MaterialIcon name="logout" size={26} color="#212121" />

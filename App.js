@@ -13,6 +13,7 @@ import ClassDetail from "./src/screens/ClassDetail";
 import { Provider } from "react-redux";
 import { store } from "./src/store/store";
 import Contactus from "./src/screens/Contactus";
+import Aboutandterms from "./src/screens/Aboutandterms";
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -43,6 +44,16 @@ export default function App() {
             <Stack.Screen
               name="Contact Us"
               component={Contactus}
+              options={{ headerShown: true }}
+            />
+            <Stack.Screen
+              name="About Us"
+              component={Aboutandterms}
+              options={{ headerShown: true }}
+            />
+            <Stack.Screen
+              name="Terms and Conditions"
+              component={Aboutandterms}
               options={{ headerShown: true }}
             />
             <Stack.Screen name="Checkout" component={Checkout} />
