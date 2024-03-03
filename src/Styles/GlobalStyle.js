@@ -14,6 +14,15 @@ const GlobalStyles = StyleSheet.create({
     backgroundColor: "#f3f5f7",
     width: "100%",
   },
+  input_free__class: {
+    height: 45,
+    marginTop: 10,
+    marginBottom: 10,
+    paddingLeft: 20,
+    borderRadius: 2,
+    backgroundColor: "#f3f5f7",
+    width: "100%",
+  },
   main: {
     flex: 1,
     padding: 15,

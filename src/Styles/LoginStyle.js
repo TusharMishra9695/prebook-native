@@ -9,7 +9,8 @@ const LoginStyles = StyleSheet.create({
   },
   box: {
     padding: 35,
-    borderRadius: 40,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
     height: "70%",
     backgroundColor: "#fff",
   },
