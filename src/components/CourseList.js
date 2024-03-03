@@ -1,4 +1,11 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Animated,
+  Easing,
+} from "react-native";
 import Borders from "./Borders";
 import CoursesStyle from "../Styles/CoursesStyle";
 import { useState } from "react";
@@ -28,6 +35,26 @@ export default function CourseList(props) {
     classStart,
     _id,
   } = props.item;
+
+  const [rotation] = useState(new Animated.Value(0));
+
+  const rotateIcon = () => {
+    Animated.timing(rotation, {
+      toValue: 1,
+      duration: 400,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start(() => {
+      // Reset rotation to 0 after the animation is complete
+      rotation.setValue(0);
+    });
+  };
+
+  const interpolatedRotation = rotation.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
+  });
+
   return (
     <>
       <View style={CoursesStyle.compont}>
@@ -114,15 +141,21 @@ export default function CourseList(props) {
         <View style={CoursesStyle.btn_flex}>
           <TouchableOpacity
             style={styles.pickerContainer}
-            onPress={() => setShowOptions(!showOptions)}
+            onPress={() => {
+              rotateIcon(), setShowOptions(!showOptions);
+            }}
           >
             <Text style={styles.selectedValue}>
               ₹{" "}
               {selectedValue === 3499
                 ? `${selectedValue.toLocaleString()}/month`
                 : selectedValue.toLocaleString()}
-              <MaterialIcon name="arrow-drop-up" size={15} color="purple" />
             </Text>
+            <Animated.View
+              style={{ transform: [{ rotate: interpolatedRotation }] }}
+            >
+              <MaterialIcon name="arrow-drop-up" size={20} color="purple" />
+            </Animated.View>
           </TouchableOpacity>
           {/* <TouchableOpacity
             style={CoursesStyle.buy_btn}
@@ -152,15 +185,17 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 20,
-    width: 135,
+    width: 138,
     height: 40,
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "row",
   },
   selectedValue: {
     fontSize: 15,
     fontWeight: "500",
     color: Colors.secondary,
+    marginTop: -4,
   },
   optionsContainer: {
     marginTop: 10,

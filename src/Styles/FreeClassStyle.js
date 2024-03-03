@@ -77,5 +77,22 @@ const FreeClassStyle = StyleSheet.create({
     marginTop: 20,
     overflow: "hidden",
   },
+  check_icon: {
+    color: "purple",
+    textAlign: "center",
+    marginBottom: 40,
+  },
+  done_text: {
+    fontSize: 25,
+    fontWeight: "600",
+    color: Colors.secondary,
+    textAlign: "center",
+  },
+  book_text: {
+    fontSize: 13,
+    fontWeight: "500",
+    color: "#212121",
+    textAlign: "center",
+  },
 });
 export default FreeClassStyle;

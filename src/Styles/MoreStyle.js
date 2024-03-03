@@ -18,7 +18,7 @@ const MoreStyle = StyleSheet.create({
   list_txt: {
     letterSpacing: 1,
     fontSize: 18,
-    fontWeight: "400",
+    fontWeight: "300",
     color: "#212121",
   },
   centeredView: {

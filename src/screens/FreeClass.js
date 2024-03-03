@@ -8,16 +8,20 @@ import {
 import FreeClassStyle from "../Styles/FreeClassStyle";
 import { Colors } from "../utils/someExports";
 import Fontisto from "react-native-vector-icons/Fontisto";
+import AntDesign from "react-native-vector-icons/AntDesign";
+
 import GlobalStyles from "../Styles/GlobalStyle";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import Borders from "../components/Borders";
 import ContactusStyle from "../Styles/ContactusStyle";
 import CoursesStyle from "../Styles/CoursesStyle";
+import CheckoutStyle from "../Styles/CheckoutStyle";
 export default function FreeClass() {
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [showTime, setShowTime] = useState(false);
+  const [done, setdone] = useState(false);
 
   const onChange = (event, selectedDate) => {
     setDate(selectedDate);
@@ -64,7 +68,7 @@ export default function FreeClass() {
                 value={date}
                 mode="date"
                 is24Hour={true}
-                display="calendar"
+                display="spinner"
                 onChange={onChange}
               />
             )}
@@ -89,10 +93,13 @@ export default function FreeClass() {
           )}
           <Borders />
         </View>
-        <TouchableOpacity style={ContactusStyle.send_btn}>
-          <Text style={CoursesStyle.buy_text}>Book My Class</Text>
+        <TouchableOpacity
+          style={ContactusStyle.send_btn}
+          onPress={() => setdone(!done)}
+        >
+          <Text style={CoursesStyle.buy_text}>Reserve My Seat</Text>
         </TouchableOpacity>
-        <View style={[ContactusStyle.overscreen, FreeClassStyle.extra_margin]}>
+        {/* <View style={[ContactusStyle.overscreen, FreeClassStyle.extra_margin]}>
           <View style={ContactusStyle.gap_us}>
             <Text style={ContactusStyle.talk_text}>Academy Address</Text>
             <Text style={ContactusStyle.inside_heading}>00 Saket Nagar</Text>
@@ -105,7 +112,27 @@ export default function FreeClass() {
             <Text style={ContactusStyle.inside_heading}>+91 1234567890</Text>
             <Text style={ContactusStyle.inside_heading}>test01@gmail.com</Text>
           </View>
-        </View>
+        </View> */}
+        {done && (
+          <View style={CheckoutStyle.footer}>
+            <Text style={FreeClassStyle.done_text}>Done!</Text>
+            <View>
+              <Text style={FreeClassStyle.book_text}>
+                Your seat has been reserved for
+              </Text>
+              <Text style={FreeClassStyle.book_text}>
+                the free class on Monday
+              </Text>
+              <Text style={FreeClassStyle.book_text}>10 March at 05:00 pm</Text>
+            </View>
+
+            <AntDesign
+              name="checkcircleo"
+              size={60}
+              style={FreeClassStyle.check_icon}
+            />
+          </View>
+        )}
       </View>
     </View>
   );
