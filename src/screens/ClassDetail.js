@@ -1,6 +1,7 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import BatchDetailStyle from "../Styles/BatchDetailStyle";
 import { useEffect, useState } from "react";
+import CheckoutStyle from "../Styles/CheckoutStyle";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
@@ -43,64 +44,74 @@ export default function ClassDetail(props) {
     checkAuth();
   }, []);
   return (
-    <ScrollView style={BatchDetailStyle.main}>
-      {classDetails &&
-        classDetails.map((item, id) => {
-          const { heading, points } = item;
-          return (
-            <View style={BatchDetailStyle.main} key={id}>
-              <View style={BatchDetailStyle.section}>
-                <Text style={BatchDetailStyle.heading}>{heading}</Text>
-                {points &&
-                  points.map((items, id) => {
-                    return (
-                      <View key={id} style={BatchDetailStyle.points_wrapper}>
-                        <Icon name="check-circle" size={15} color="skyblue" />
-                        <Text style={BatchDetailStyle.wrapper_text_points}>
-                          {items.detail}
-                        </Text>
-                      </View>
-                    );
-                  })}
-              </View>
-            </View>
-          );
-        })}
-      <View style={[BatchDetailStyle.main, BatchDetailStyle.endFaq]}>
-        <Text style={BatchDetailStyle.heading}>FAQ's</Text>
-        {faqState &&
-          faqState.result &&
-          faqState.result.map((item, id) => {
-            const { question, answer } = item;
+    <>
+      <ScrollView style={BatchDetailStyle.main}>
+        {classDetails &&
+          classDetails.map((item, id) => {
+            const { heading, points } = item;
             return (
-              <View key={id}>
-                <View>
-                  <TouchableOpacity
-                    style={BatchDetailStyle.inside_sec02}
-                    onPress={() =>
-                      setshowFaq({
-                        ...showFaq,
-                        value: !showFaq.value,
-                        openId: id,
-                      })
-                    }
-                  >
-                    <Text style={BatchDetailStyle.inside_sec02_text}>
-                      {question}
-                    </Text>
-                  </TouchableOpacity>
-                  {showFaq.value && showFaq.openId == id && (
-                    <View style={BatchDetailStyle.wrapper}>
-                      <Text style={BatchDetailStyle.wrapper_text}>
-                        {answer}
-                      </Text>
-                    </View>
-                  )}
+              <View style={BatchDetailStyle.main} key={id}>
+                <View style={BatchDetailStyle.section}>
+                  <Text style={BatchDetailStyle.heading}>{heading}</Text>
+                  {points &&
+                    points.map((items, id) => {
+                      return (
+                        <View key={id} style={BatchDetailStyle.points_wrapper}>
+                          <Icon name="check-circle" size={15} color="skyblue" />
+                          <Text style={BatchDetailStyle.wrapper_text_points}>
+                            {items.detail}
+                          </Text>
+                        </View>
+                      );
+                    })}
                 </View>
               </View>
             );
           })}
+        <View style={[BatchDetailStyle.main, BatchDetailStyle.endFaq]}>
+          <Text style={BatchDetailStyle.heading}>FAQ's</Text>
+          {faqState &&
+            faqState.result &&
+            faqState.result.map((item, id) => {
+              const { question, answer } = item;
+              return (
+                <View key={id}>
+                  <View>
+                    <TouchableOpacity
+                      style={BatchDetailStyle.inside_sec02}
+                      onPress={() =>
+                        setshowFaq({
+                          ...showFaq,
+                          value: !showFaq.value,
+                          openId: id,
+                        })
+                      }
+                    >
+                      <Text style={BatchDetailStyle.inside_sec02_text}>
+                        {question}
+                      </Text>
+                    </TouchableOpacity>
+                    {showFaq.value && showFaq.openId == id && (
+                      <View style={BatchDetailStyle.wrapper}>
+                        <Text style={BatchDetailStyle.wrapper_text}>
+                          {answer}
+                        </Text>
+                      </View>
+                    )}
+                  </View>
+                </View>
+              );
+            })}
+        </View>
+      </ScrollView>
+      <View style={[CheckoutStyle.footer, BatchDetailStyle.extra_pad]}>
+        <TouchableOpacity
+          style={[CheckoutStyle.checkout_btn]}
+          onPress={() => navigation.navigate("FreeClass")}
+        >
+          <Text style={CheckoutStyle.checkout_text}>Book Free Class</Text>
+        </TouchableOpacity>
       </View>
-    </ScrollView>
+    </>
   );
 }

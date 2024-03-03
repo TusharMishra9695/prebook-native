@@ -52,5 +52,9 @@ const BatchDetailStyle = StyleSheet.create({
     gap: 10,
     alignItems: "center",
   },
+  extra_pad: {
+    paddingTop: 15,
+    paddingBottom: 25,
+  },
 });
 export default BatchDetailStyle;
