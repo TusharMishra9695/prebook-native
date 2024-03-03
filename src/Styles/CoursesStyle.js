@@ -57,6 +57,17 @@ const CoursesStyle = StyleSheet.create({
     shadowColor: "grey",
     elevation: 10,
   },
+
+  book_btn: {
+    height: 40.5,
+    width: 145,
+    borderRadius: 20,
+    backgroundColor: "purple",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "grey",
+    elevation: 10,
+  },
   items: {
     color: Colors.secondary, // Example styles
   },
@@ -66,7 +77,7 @@ const CoursesStyle = StyleSheet.create({
     fontWeight: "500",
   },
   buy_text: {
-    fontSize: 15,
+    fontSize: 14,
     letterSpacing: 1,
     fontWeight: "500",
     color: "#fff",

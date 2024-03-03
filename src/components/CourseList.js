@@ -64,7 +64,7 @@ export default function CourseList(props) {
           </Text>
         </View>
         <Borders />
-        {mode === "online" ? (
+        {/* {mode === "online" ? (
           <Text style={[GlobalStyles.heading, CoursesStyle.seat_alert]}>
             {seats < 500 ? `Only ${seats} seats left !!!` : "Limited seats !!!"}
           </Text>
@@ -72,7 +72,7 @@ export default function CourseList(props) {
           <Text style={[GlobalStyles.heading, CoursesStyle.seat_alert]}>
             Only {seats} seats available !
           </Text>
-        )}
+        )} */}
 
         {selectedValue != discounted_price.monthly && (
           <Text style={[GlobalStyles.heading, CoursesStyle.discount]}>
@@ -124,7 +124,7 @@ export default function CourseList(props) {
               <MaterialIcon name="arrow-drop-up" size={15} color="purple" />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={CoursesStyle.buy_btn}
             onPress={() =>
               navigation.navigate("Checkout", {
@@ -134,6 +134,12 @@ export default function CourseList(props) {
             }
           >
             <Text style={CoursesStyle.buy_text}>Buy Now</Text>
+          </TouchableOpacity> */}
+          <TouchableOpacity
+            style={CoursesStyle.book_btn}
+            onPress={() => navigation.navigate("FreeClass")}
+          >
+            <Text style={CoursesStyle.buy_text}>Book Free Class</Text>
           </TouchableOpacity>
         </View>
       </View>

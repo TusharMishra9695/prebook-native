@@ -6,7 +6,6 @@ const LoginStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     backgroundColor: Colors.primary,
-    borderRadius: 40,
   },
   box: {
     padding: 35,

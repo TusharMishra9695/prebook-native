@@ -1,4 +1,10 @@
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StatusBar,
+} from "react-native";
 import LoginStyles from "../Styles/LoginStyle";
 import GlobalStyles from "../Styles/GlobalStyle";
 import { useNavigation } from "@react-navigation/native";
@@ -6,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { postAPI } from "../utils/apiCalls";
 import {
+  Colors,
   TextError,
   cacheData,
   getCachedData,
@@ -76,6 +83,7 @@ export default function Login() {
 
   return (
     <View style={LoginStyles.top}>
+      <StatusBar backgroundColor={Colors.white} barStyle="light-content" />
       <Container position="top" />
       <View style={LoginStyles.box}>
         <Text style={LoginStyles.texts}>
