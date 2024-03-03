@@ -16,10 +16,10 @@ export default function TabNav() {
       }}
     >
       <Tab.Screen
-        name="My Batch"
+        name="My Classes"
         component={Batch}
         options={{
-          tabBarLabel: "My Batch",
+          tabBarLabel: "My Classes",
           tabBarIcon: ({ color }) => (
             <MaterialIcon name="local-library" size={25} color={color} />
           ),

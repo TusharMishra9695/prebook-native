@@ -7,6 +7,7 @@ import CourseList from "../components/CourseList";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import BookedDetail from "../components/BookedDetail";
 export default function Batch() {
   const state = useSelector((state) => state.apiSlice.data);
   const navigation = useNavigation();
@@ -24,28 +25,33 @@ export default function Batch() {
     checkAuth();
   }, []);
   return (
-    <ScrollView style={GlobalStyles.main}>
-      <View style={BatchStyle.component}>
-        <Text style={BatchStyle.emptymsg}>
-          Oops! You haven't booked any class.
-        </Text>
-        <Text style={[GlobalStyles.heading, BatchStyle.extra_margin]}>
-          Here is some recommended course for you.
-        </Text>
-        <Text style={[GlobalStyles.heading, BatchStyle.extra_margin]}>
-          Book your free class now!
-        </Text>
+    <>
+      {/* // <ScrollView style={GlobalStyles.main}>
+    //   <View style={BatchStyle.component}>
+    //     <Text style={BatchStyle.emptymsg}>
+    //       Oops! You haven't booked any class.
+    //     </Text>
+    //     <Text style={[GlobalStyles.heading, BatchStyle.extra_margin]}>
+    //       Here is some recommended course for you.
+    //     </Text>
+    //     <Text style={[GlobalStyles.heading, BatchStyle.extra_margin]}>
+    //       Book your free class now!
+    //     </Text>
+    //   </View>
+    //   {state &&
+    //     state.result.slice(0, 5).map((item, id) => {
+    //       return <CourseList item={item} key={id} />;
+    //     })}
+    //   <TouchableOpacity
+    //     style={CoursesStyle.recommended}
+    //     onPress={() => navigation.navigate("Classes")}
+    //   >
+    //     <Text style={GlobalStyles.heading}>Explore More Courses !</Text>
+    //   </TouchableOpacity>
+    // </ScrollView> */}
+      <View style={GlobalStyles.main}>
+        <BookedDetail />
       </View>
-      {state &&
-        state.result.slice(0, 5).map((item, id) => {
-          return <CourseList item={item} key={id} />;
-        })}
-      <TouchableOpacity
-        style={CoursesStyle.recommended}
-        onPress={() => navigation.navigate("Classes")}
-      >
-        <Text style={GlobalStyles.heading}>Explore More Courses !</Text>
-      </TouchableOpacity>
-    </ScrollView>
+    </>
   );
 }
