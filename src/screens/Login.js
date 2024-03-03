@@ -68,7 +68,6 @@ export default function Login() {
           navigation.navigate(
             route.params && route.params.data == "Signup" ? "Signup" : "Course"
           );
-          Toast.error(data.message);
         } else {
           Toast.error(data.message);
         }

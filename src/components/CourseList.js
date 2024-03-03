@@ -41,7 +41,7 @@ export default function CourseList(props) {
   const rotateIcon = () => {
     Animated.timing(rotation, {
       toValue: 1,
-      duration: 400,
+      duration: 500,
       easing: Easing.linear,
       useNativeDriver: true,
     }).start(() => {
