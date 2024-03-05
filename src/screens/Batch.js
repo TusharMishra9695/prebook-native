@@ -6,7 +6,7 @@ import { getCachedData } from "../utils/someExports";
 import CourseList from "../components/CourseList";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BookedDetail from "../components/BookedDetail";
 import { fetchUserData } from "../store/slices/apiSlice";
 import { FlatList } from "react-native";
