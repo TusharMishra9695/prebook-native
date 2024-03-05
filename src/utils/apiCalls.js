@@ -27,10 +27,16 @@ export async function postAPI(endPoint, formData, token) {
     console.log("post error");
   }
 }
-export async function patchAPI(url, id, updatedData) {
+export async function patchAPI(endPoint, formData, token) {
+  const url = `http://192.168.235.237:5000/api${endPoint}`;
+
   try {
-    let result = await axios.patch(`${url}?id=${id}`);
-    return result;
+    let result = await axios.patch(url, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+      },
+    });
+    return result.data;
   } catch (e) {
     console.log(e, "patch error");
   }

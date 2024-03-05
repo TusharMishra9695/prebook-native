@@ -3,17 +3,23 @@ import MoreStyle from "../Styles/MoreStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import { getCachedData } from "../utils/someExports";
+import { fetchUserData } from "../store/slices/apiSlice";
 import Borders from "../components/Borders";
 import { useNavigation } from "@react-navigation/native";
 import { removeItemFromStorage } from "../utils/someExports";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 export default function More() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.apiSlice.userdata);
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
   async function checkAuth() {
     try {
       let result = await getCachedData("token");
-      if (!result.token) {
+      if (result.token) {
+        dispatch(fetchUserData(result.token));
+      } else {
         navigation.navigate("Login");
       }
     } catch (e) {
@@ -28,7 +34,9 @@ export default function More() {
     <View style={MoreStyle.main}>
       <TouchableOpacity
         style={MoreStyle.list}
-        onPress={() => navigation.navigate("My Profile")}
+        onPress={() =>
+          navigation.navigate("My Profile", { data: state && state.result })
+        }
       >
         <MaterialIcon name="account-circle" size={26} color="black" />
         <Text style={MoreStyle.list_txt}>View Profile</Text>

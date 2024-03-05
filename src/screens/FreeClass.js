@@ -65,7 +65,7 @@ export default function FreeClass(props) {
             setdone(true);
           }
         } catch (e) {
-          console.log("some error ");
+          console.log("some error in free class");
         }
       } else {
         seterror({ ...error, email: true });
