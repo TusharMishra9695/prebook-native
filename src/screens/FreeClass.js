@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 import CheckoutStyle from "../Styles/CheckoutStyle";
 import { postAPI } from "../utils/apiCalls";
 import ReservedSeat from "../components/ReservedSeat";
-export default function FreeClass() {
+export default function FreeClass(props) {
   const state = useSelector((state) => state.apiSlice.userdata);
   const [done, setdone] = useState(false);
   const [showDateTime, setShowDateTime] = useState(false);
@@ -48,6 +48,7 @@ export default function FreeClass() {
           college: form.college,
           date: form.date,
           time: form.time,
+          course_name: (props.route.params && props.route.params.course) || "",
         };
         try {
           let confirm = await postAPI("/free-class", formData, form.token);
@@ -88,7 +89,6 @@ export default function FreeClass() {
   useEffect(() => {
     checkAuth();
   }, []);
-
   return (
     <>
       {done ? (

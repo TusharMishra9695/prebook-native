@@ -1,7 +1,10 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FreeClassStyle from "../Styles/FreeClassStyle";
+import CoursesStyle from "../Styles/CoursesStyle";
+import { useNavigation } from "@react-navigation/native";
 export default function ReservedSeat() {
+  const navigation = useNavigation();
   return (
     <View style={FreeClassStyle.reserved_seat__main}>
       <Text style={FreeClassStyle.done_text}>Done!</Text>
@@ -18,6 +21,12 @@ export default function ReservedSeat() {
         size={100}
         style={FreeClassStyle.check_icon}
       />
+      <TouchableOpacity
+        style={FreeClassStyle.check_details__btn}
+        onPress={() => navigation.navigate("My Classes")}
+      >
+        <Text style={CoursesStyle.buy_text}>Check Details</Text>
+      </TouchableOpacity>
     </View>
   );
 }

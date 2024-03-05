@@ -170,7 +170,7 @@ export default function CourseList(props) {
           </TouchableOpacity> */}
           <TouchableOpacity
             style={CoursesStyle.book_btn}
-            onPress={() => navigation.navigate("FreeClass")}
+            onPress={() => navigation.navigate("FreeClass", { course: name })}
           >
             <Text style={CoursesStyle.buy_text}>Book Free Class</Text>
           </TouchableOpacity>

@@ -11,6 +11,7 @@ const FreeClassStyle = StyleSheet.create({
     gap: 20,
     justifyContent: "center",
     backgroundColor: "#fff",
+    alignItems: "center",
   },
   box: {
     flex: 1,
@@ -100,7 +101,6 @@ const FreeClassStyle = StyleSheet.create({
   check_icon: {
     color: "purple",
     textAlign: "center",
-    marginBottom: 40,
   },
   done_text: {
     fontSize: 25,
@@ -117,6 +117,16 @@ const FreeClassStyle = StyleSheet.create({
   date_extra__margin: {
     marginBottom: 10,
     marginTop: 10,
+  },
+  check_details__btn: {
+    height: 30,
+    width: 145,
+    borderRadius: 20,
+    backgroundColor: "purple",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "grey",
+    elevation: 10,
   },
 });
 export default FreeClassStyle;

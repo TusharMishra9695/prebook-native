@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import BookedDetail from "../components/BookedDetail";
 import { fetchUserData } from "../store/slices/apiSlice";
 import { FlatList } from "react-native";
-export default function Batch() {
+export default function Batch(props) {
   const state = useSelector((state) => state.apiSlice.userdata);
   const course_list = useSelector((state) => state.apiSlice.data);
 
@@ -21,9 +21,7 @@ export default function Batch() {
     try {
       let result = await getCachedData("token");
       if (result.token) {
-        if (state && !state.result) {
-          dispatch(fetchUserData(result.token));
-        }
+        dispatch(fetchUserData(result.token));
       } else {
         navigation.navigate("Login");
       }
@@ -34,6 +32,7 @@ export default function Batch() {
   useEffect(() => {
     checkAuth();
   }, []);
+
   return (
     <>
       {state && state.result && state.result.free_class.length > 0 ? (
