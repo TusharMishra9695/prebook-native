@@ -6,11 +6,16 @@ const FreeClassStyle = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.primary,
   },
+  reserved_seat__main: {
+    flex: 1,
+    gap: 20,
+    justifyContent: "center",
+    backgroundColor: "#fff",
+  },
   box: {
     flex: 1,
     padding: 35,
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
+    borderRadius: 40,
     backgroundColor: "#fff",
   },
   top_text: {
@@ -67,9 +72,9 @@ const FreeClassStyle = StyleSheet.create({
   slot_flexy: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
+    gap: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
     justifyContent: "center",
   },
   date_flexy: {
@@ -104,7 +109,7 @@ const FreeClassStyle = StyleSheet.create({
     textAlign: "center",
   },
   book_text: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "500",
     color: "#212121",
     textAlign: "center",
