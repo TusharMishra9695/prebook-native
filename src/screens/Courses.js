@@ -5,7 +5,7 @@ import { useEffect, useCallback } from "react";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../store/slices/apiSlice";
+import { fetchData, fetchUserData } from "../store/slices/apiSlice";
 import { useState } from "react";
 
 export default function Courses() {
@@ -26,6 +26,7 @@ export default function Courses() {
       const result = await getCachedData("token");
       if (result.token) {
         dispatch(fetchData(result.token));
+        dispatch(fetchUserData(result.token));
       } else {
         navigation.navigate("Login");
       }

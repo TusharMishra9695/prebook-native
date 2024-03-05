@@ -11,6 +11,7 @@ export default function BookedDetail() {
     )}`;
     Linking.openURL(googleMapsUrl);
   };
+
   return (
     <View style={BookedStyle.compont}>
       <Text style={BookedStyle.heading}>Designing with html/css</Text>

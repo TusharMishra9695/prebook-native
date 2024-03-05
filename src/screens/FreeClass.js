@@ -16,10 +16,12 @@ import GlobalStyles from "../Styles/GlobalStyle";
 import { useEffect, useState } from "react";
 import Borders from "../components/Borders";
 import ContactusStyle from "../Styles/ContactusStyle";
+import { useSelector } from "react-redux";
 import CheckoutStyle from "../Styles/CheckoutStyle";
 import { postAPI } from "../utils/apiCalls";
 import ReservedSeat from "../components/ReservedSeat";
 export default function FreeClass() {
+  const state = useSelector((state) => state.apiSlice.userdata);
   const [done, setdone] = useState(false);
   const [showDateTime, setShowDateTime] = useState(false);
   const [form, setform] = useState({
@@ -40,7 +42,7 @@ export default function FreeClass() {
     if (form.name && form.email && form.college && form.date && form.time) {
       if (validateEmail(form.email)) {
         let formData = {
-          phoneNumber: 9149327018,
+          phoneNumber: state && state.result && state.result.phoneNumber,
           name: form.name,
           email: form.email,
           college: form.college,
@@ -111,9 +113,10 @@ export default function FreeClass() {
             </View>
             <View>
               <TextInput
-                placeholder="Phone Number"
+                placeholder={
+                  state && state.result && state.result.phoneNumber.toString()
+                }
                 style={GlobalStyles.input_free__class}
-                // value={email}
                 editable={false}
               />
             </View>
