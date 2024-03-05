@@ -56,5 +56,23 @@ const BatchDetailStyle = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 25,
   },
+  link_btn: {
+    flex: 1,
+    padding: 10,
+    borderRadius: 30,
+    backgroundColor: Colors.primary,
+    marginTop: 10,
+    marginBottom: 10,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  link_text: {
+    textAlign: "center",
+    fontSize: 15,
+    textTransform: "uppercase",
+    color: Colors.white,
+    letterSpacing: 1,
+    fontWeight: "600",
+  },
 });
 export default BatchDetailStyle;

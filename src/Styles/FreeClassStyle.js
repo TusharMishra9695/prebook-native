@@ -35,6 +35,15 @@ const FreeClassStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  date_radio: {
+    height: 30,
+    borderRadius: 20,
+    // backgroundColor: "#f3f5f7",
+    borderWidth: 1,
+    borderColor: "purple",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   selected_time: {
     height: 30,
     width: 120,
@@ -73,6 +82,12 @@ const FreeClassStyle = StyleSheet.create({
     backgroundColor: "#f3f5f7",
     alignItems: "center",
   },
+  date_select__flexy: {
+    height: 100,
+    paddingLeft: 20,
+    marginTop: 10,
+    marginBottom: 10,
+  },
   extra_margin: {
     marginTop: 20,
     overflow: "hidden",
@@ -93,6 +108,10 @@ const FreeClassStyle = StyleSheet.create({
     fontWeight: "500",
     color: "#212121",
     textAlign: "center",
+  },
+  date_extra__margin: {
+    marginBottom: 10,
+    marginTop: 10,
   },
 });
 export default FreeClassStyle;

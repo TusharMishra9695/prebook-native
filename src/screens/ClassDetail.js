@@ -2,12 +2,14 @@ import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import BatchDetailStyle from "../Styles/BatchDetailStyle";
 import { useEffect, useState } from "react";
 import CheckoutStyle from "../Styles/CheckoutStyle";
+import AntDesign from "react-native-vector-icons/AntDesign";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { getCachedData } from "../utils/someExports";
 import { useNavigation } from "@react-navigation/native";
 import { getAPI } from "../utils/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFaqData } from "../store/slices/apiSlice";
+
 export default function ClassDetail(props) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ export default function ClassDetail(props) {
           result.token
         );
         if (details.success) {
-          setclassDetails(details.result[0].includes);
+          setclassDetails(details.result.includes);
         } else {
           console.log(details.message);
         }
@@ -43,6 +45,23 @@ export default function ClassDetail(props) {
   useEffect(() => {
     checkAuth();
   }, []);
+  // async function downloadLink() {
+  //   try {
+  //     const url =
+  //       "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+  //     const localFilePath = `${RNFS.DocumentDirectoryPath}/your_file_name.pdf`;
+
+  //     const options = {
+  //       fromUrl: url,
+  //       toFile: localFilePath,
+  //     };
+
+  //     const res = await RNFS.downloadFile(options).promise;
+  //     console.log("File downloaded to: ", res);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
   return (
     <>
       <ScrollView style={BatchDetailStyle.main}>
@@ -68,6 +87,13 @@ export default function ClassDetail(props) {
               </View>
             );
           })}
+        {/* <TouchableOpacity
+          style={BatchDetailStyle.link_btn}
+          onPress={() => downloadLink()}
+        >
+          <Text style={BatchDetailStyle.link_text}>Download Broucher</Text>
+          <AntDesign name="download" size={18} color="white" />
+        </TouchableOpacity> */}
         <View style={[BatchDetailStyle.main, BatchDetailStyle.endFaq]}>
           <Text style={BatchDetailStyle.heading}>FAQ's</Text>
           {faqState &&
